@@ -36,15 +36,12 @@ router.get("/get/:id", async (req, res) => {
         const article = await Post.findOne({ _id: req.params.id });
 
         if (!article) {
-            console.log("❌ Article not found in DB.");
             return res.status(404).json({ message: "Article not found" });
         }
 
-        console.log("✅ Article found:", article);
         res.status(200).json({ message: "Article found successfully", article: article });
 
     } catch (err) {
-        console.error("❌ Error fetching article:", err);
         res.status(500).json({ error: err.message });
     }
 });
