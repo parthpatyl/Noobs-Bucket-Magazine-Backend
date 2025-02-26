@@ -21,13 +21,13 @@ const userSchema = new mongoose.Schema({
     saveArticles: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Article'
+            ref: 'Post'
         }
     ],
     likedArticles: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Article'
+            ref: 'Post'
         }
     ]
 })
