@@ -39,7 +39,7 @@ const ArticleSchema = new mongoose.Schema({
     content: {
         type: String,
         required: true,
-    }
+    },
 });
 
 module.exports = mongoose.model("Post", ArticleSchema, "post");

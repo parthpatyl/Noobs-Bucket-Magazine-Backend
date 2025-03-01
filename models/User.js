@@ -18,16 +18,16 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    saveArticles: [
+    savedArticles: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Post'
+            ref: 'User'
         }
     ],
     likedArticles: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Post'
+            ref: 'User'
         }
     ]
 })

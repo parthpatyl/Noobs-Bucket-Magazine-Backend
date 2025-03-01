@@ -63,7 +63,9 @@ router.post("/login", async (req, res) => {
               id: user._id,
               email: user.email,
               name: user.name,
-              memberSince: user.memberSince, // Ensure this field exists in the schema
+              memberSince: user.memberSince,
+              savedArticles: user.savedArticles, // Include saved articles
+              likedArticles: user.likedArticles  // Include liked articles
           }
       });
 
@@ -73,25 +75,42 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.put('/user/:id', (req, res) => {
-  const { userId } = req.params;
-  const updates = req.body;
-  const userIndex = users.findIndex(u => u.id === userId);
+router.put('/user/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+    
+    // Validate MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ success: false, message: "Invalid user ID format" });
+    }
 
-  if (userIndex === -1) {
-    return res.status(404).json({ success: false, message: "User not found" });
+    const user = await User.findByIdAndUpdate(
+      id,
+      { $set: updates },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    // Return the updated user object
+    return res.status(200).json({
+      success: true,
+      user: {
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        memberSince: user.memberSince,
+        savedArticles: user.savedArticles,
+        likedArticles: user.likedArticles
+      }
+    });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
-
-const updatedUser = {
-  ...users[userIndex],
-  ...updates,
-  savedArticles: updates.savedArticles || users[userIndex].savedArticles,
-  likedArticles: updates.likedArticles || users[userIndex].likedArticles
-};
-
-users[userIndex] = updatedUser;
-fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
-res.json({ success: true, users: updatedUser });
 });
 
 module.exports = router;

@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
     console.log("✅ MongoDB Connected Successfully to DB:", mongoose.connection.name);
     const collections = await mongoose.connection.db.listCollections().toArray();
     console.log("📁 Collections in DB:", collections.map(c => c.name));
+    console.log(mongoose.modelNames()); // Should include 'Article'
 
 }).catch(err => console.log("❌ MongoDB connection error:", err));
 
