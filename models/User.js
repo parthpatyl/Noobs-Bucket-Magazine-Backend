@@ -17,7 +17,19 @@ const userSchema = new mongoose.Schema({
     memberSince: {
         type: Date,
         default: Date.now
-    }
+    },
+    savedArticles: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
+    likedArticles: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 })
 
 module.exports = mongoose.model('User', userSchema);

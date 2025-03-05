@@ -64,6 +64,8 @@ router.post("/login", async (req, res) => {
               email: user.email,
               name: user.name,
               memberSince: user.memberSince,
+              savedArticles: user.savedArticles, // Include saved articles
+              likedArticles: user.likedArticles  // Include liked articles
           }
       });
 
@@ -101,6 +103,8 @@ router.put('/user/:id', async (req, res) => {
         email: user.email,
         name: user.name,
         memberSince: user.memberSince,
+        savedArticles: user.savedArticles,
+        likedArticles: user.likedArticles
       }
     });
   } catch (error) {
