@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const User = require("./models/User"); // Adjust path as needed
 
 // Replace with your MongoDB connection string and database name
-const MONGO_URI = "mongodb+srv://prth:prthdbms@bucket.fruga.mongodb.net/";
+const MONGO_URI = "mongodb+srv://prth:prthdbms@bucket.fruga.mongodb.net/articles?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
@@ -17,7 +17,6 @@ mongoose.connect(MONGO_URI, {
 
 // Helper function to check if a value is a valid ObjectId string
 const isValidObjectId = (value) => {
-  // Mongoose's isValid will return true only for valid 24-character hex strings or ObjectId instances
   return mongoose.Types.ObjectId.isValid(value);
 };
 
@@ -30,8 +29,13 @@ async function cleanUserArticles() {
       // Clean savedArticles array
       if (Array.isArray(user.savedArticles)) {
         const validSaved = user.savedArticles.filter(articleId => {
-          // articleId might be an object or string. We try to cast it to string.
-          const idStr = typeof articleId === "object" && articleId._id ? articleId._id.toString() : articleId.toString();
+          if (articleId == null) return false; // skip null or undefined values
+          let idStr;
+          if (typeof articleId === "object" && articleId._id) {
+            idStr = articleId._id.toString();
+          } else {
+            idStr = articleId.toString();
+          }
           return isValidObjectId(idStr);
         });
         if (validSaved.length !== user.savedArticles.length) {
@@ -44,7 +48,13 @@ async function cleanUserArticles() {
       // Clean likedArticles array
       if (Array.isArray(user.likedArticles)) {
         const validLiked = user.likedArticles.filter(articleId => {
-          const idStr = typeof articleId === "object" && articleId._id ? articleId._id.toString() : articleId.toString();
+          if (articleId == null) return false; // skip null or undefined values
+          let idStr;
+          if (typeof articleId === "object" && articleId._id) {
+            idStr = articleId._id.toString();
+          } else {
+            idStr = articleId.toString();
+          }
           return isValidObjectId(idStr);
         });
         if (validLiked.length !== user.likedArticles.length) {

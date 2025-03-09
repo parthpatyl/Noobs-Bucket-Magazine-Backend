@@ -9,7 +9,7 @@ const Post = require("../models/Post");
 router.get("/get", async (req, res) => {
     try {
         console.log("Fetching all articles...");
-        const articles = await Post.find({}, { _id: 1, title: 1, category: 1, image: 1, excerpt: 1, readTime: 1 });
+        const articles = await Post.find({}, {});
 
         if (!articles.length) {
             return res.status(404).json({ message: "No articles found" });
