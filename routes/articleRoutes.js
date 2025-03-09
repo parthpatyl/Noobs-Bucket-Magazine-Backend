@@ -115,4 +115,33 @@ router.post("/save/:articleId", async (req, res) => {
     }
 });
 
+router.post("/add", async (req, res) => {
+    try {
+        const { title, category, image, excerpt, readtime, author, tags, content } = req.body;
+
+        if (!title || !category || !excerpt || !readtime || !author || !tags || !content) {
+            return res.status(400).json({ message: "All fields (title, category, image, excerpt, readtime, author, tags, content) are required" });
+        }
+
+        const newArticle = new Post({
+            title,
+            category,
+            image,
+            excerpt,
+            readtime,
+            author,
+            tags,
+            content
+        });
+
+        await newArticle.save();
+
+        res.status(201).json({ message: "Article added successfully", article: newArticle });
+    } catch (err) {
+        console.error("❌ Error adding article:", err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+
 module.exports = router;
