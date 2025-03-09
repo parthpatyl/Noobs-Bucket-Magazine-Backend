@@ -6,7 +6,6 @@ const Post = require('../models/Post');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
-
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -33,7 +32,6 @@ router.post("/login", async (req, res) => {
   try {
       const { email, password } = req.body;
 
-      // Debugging log
       console.log("🟢 Login request received for:", email);
 
       if (!email || !password) {
@@ -61,12 +59,12 @@ router.post("/login", async (req, res) => {
           success: true,
           message: "User Logged in Successfully",
           user: {
-              id: user._id,
+              _id: user._id,
               email: user.email,
               name: user.name,
               memberSince: user.memberSince,
-              savedArticles: user.savedArticles, // Include saved articles
-              likedArticles: user.likedArticles  // Include liked articles
+              savedArticles: user.savedArticles,
+              likedArticles: user.likedArticles
           }
       });
 
@@ -75,7 +73,6 @@ router.post("/login", async (req, res) => {
       return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 });
-
 
 router.get("/user/:id", async (req, res) => {
   try {
@@ -86,7 +83,7 @@ router.get("/user/:id", async (req, res) => {
     }
 
     const user = await User.findById(req.params.id)
-      .populate("savedArticles")  // ✅ Automatically fetches full article data
+      .populate("savedArticles")
       .populate("likedArticles");
 
     if (!user) {
