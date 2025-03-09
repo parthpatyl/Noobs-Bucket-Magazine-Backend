@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const User = require('../models/User');
+const Post = require('../models/Post');
 const bcrypt = require('bcrypt');
-
+const mongoose = require('mongoose');
 
 
 router.post("/register", async (req, res) => {
@@ -75,41 +76,27 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.put('/user/:id', async (req, res) => {
+
+router.get("/user/:id", async (req, res) => {
   try {
-    const { id } = req.params;
-    const updates = req.body;
-    
-    // Validate MongoDB ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ success: false, message: "Invalid user ID format" });
+    console.log("🔍 Fetching user with populated articles...");
+
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid user ID" });
     }
 
-    const user = await User.findByIdAndUpdate(
-      id,
-      { $set: updates },
-      { new: true }
-    );
+    const user = await User.findById(req.params.id)
+      .populate("savedArticles")  // ✅ Automatically fetches full article data
+      .populate("likedArticles");
 
     if (!user) {
-      return res.status(404).json({ success: false, message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
-    // Return the updated user object
-    return res.status(200).json({
-      success: true,
-      user: {
-        id: user._id,
-        email: user.email,
-        name: user.name,
-        memberSince: user.memberSince,
-        savedArticles: user.savedArticles,
-        likedArticles: user.likedArticles
-      }
-    });
+    res.status(200).json({ user });
   } catch (error) {
-    console.error("Error updating user:", error);
-    return res.status(500).json({ success: false, message: "Internal Server Error" });
+    console.error("❌ Error fetching user:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

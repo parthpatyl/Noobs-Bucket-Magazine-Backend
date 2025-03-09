@@ -2,15 +2,14 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/User");
+const Post = require("../models/Post");
 
-// Fetch all articles from the 'post' collection
+
+// Fetch all articles (Ensure _id is returned correctly)
 router.get("/get", async (req, res) => {
     try {
-        console.log("Fetching data from MongoDB...");
-        
-        const db = mongoose.connection.db;
-        const Post = db.collection("post"); // Ensure it fetches from 'post' collection
-        const articles = await Post.find().toArray();
+        console.log("Fetching all articles...");
+        const articles = await Post.find({}, { _id: 1, title: 1, category: 1, image: 1, excerpt: 1, readTime: 1 });
 
         if (!articles.length) {
             return res.status(404).json({ message: "No articles found" });
@@ -23,27 +22,25 @@ router.get("/get", async (req, res) => {
     }
 });
 
+// ✅ Fetch a single article by ID (Ensure ObjectId conversion)
 router.get("/get/:id", async (req, res) => {
     try {
-        console.log("🟢 Fetching article with ID:", req.params.id);
+        console.log("Fetching article with ID:", req.params.id);
 
-        const db = mongoose.connection.db;
-        const Post = db.collection("post");
+        if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({ message: "Invalid article ID" });
+        }
 
-        // Convert ID to ObjectId (MongoDB stores _id as ObjectId, not string)
-        const objectId = new mongoose.Types.ObjectId(req.params.id);
-
-
-        const article = await Post.findOne({ _id: req.params.id });
+        const article = await Post.findById(new mongoose.Types.ObjectId(req.params.id));
 
         if (!article) {
             return res.status(404).json({ message: "Article not found" });
         }
 
-        res.status(200).json({ message: "Article found successfully", article: article });
-
+        res.status(200).json(article);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error("❌ Error fetching article:", err);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
