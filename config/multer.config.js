@@ -5,10 +5,7 @@ const cloudinary = require('./cloudinary.js');
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: async (req, file) => {
-    const userId = req.params.id || req.body.userId;
-    if (!userId) {
-      return res.status(400).json({ message: "User ID is required" });
-    }
+    // No userId check, just use default or provided folder
     const folderPath = req.body.folder || `Magzine/`;
     return {
       folder: folderPath,

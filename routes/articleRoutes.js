@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const Post = require("../models/Post");
-
+const upload = require('../config/multer.config');
 
 // Fetch all articles (Ensure _id is returned correctly)
 router.get("/get", async (req, res) => {
@@ -115,18 +115,29 @@ router.post("/save/:articleId", async (req, res) => {
     }
 });
 
-router.post("/add", async (req, res) => {
+router.post("/add", upload.single('image'), async (req, res) => {
     try {
-        const { title, category, image, excerpt, readtime, author, tags, content } = req.body;
+        const { title, category, excerpt, readtime, author, tags, content } = req.body;
 
+        // Only check for required text fields
         if (!title || !category || !excerpt || !readtime || !author || !tags || !content) {
-            return res.status(400).json({ message: "All fields (title, category, image, excerpt, readtime, author, tags, content) are required" });
+            return res.status(400).json({ message: "All fields (title, category, excerpt, readtime, author, tags, content) are required" });
+        }
+
+        // Handle image: from file upload or direct URL
+        let imageArray = [];
+        if (req.file && req.file.path) {
+            imageArray.push(req.file.path); // Cloudinary URL
+        } else if (req.body.image) {
+            imageArray = Array.isArray(req.body.image) ? req.body.image : [req.body.image];
+        } else {
+            return res.status(400).json({ message: "Image is required" });
         }
 
         const newArticle = new Post({
             title,
             category,
-            image,
+            image: imageArray,
             excerpt,
             readtime,
             author,
