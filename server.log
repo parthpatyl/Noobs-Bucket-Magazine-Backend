@@ -1,0 +1,198 @@
+nohup: ignoring input
+(node:127066) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:127066) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+🚀 Server is running on http://localhost:5000
+✅ MongoDB Connected Successfully to DB: magazine
+📁 Collections in DB: [ 'post', 'users' ]
+[ 'User', 'Post' ]
+Fetching all articles...
+Fetching all articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4ab0
+✅ Updated liked articles for user: [ new ObjectId('6939df9fbe496ec97e1d4ab0') ]
+🔍 Fetching user with populated articles...
+Fetching all articles...
+Fetching all articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Updated liked articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('68672308fb2cb787e558bce0')
+]
+🔍 Fetching user with populated articles...
+Fetching all articles...
+Fetching all articles...
+Fetching all articles...
+Fetching all articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4ab0
+✅ Updated liked articles for user: [ new ObjectId('68672308fb2cb787e558bce0') ]
+🔍 Fetching user with populated articles...
+Fetching all articles...
+Fetching all articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4ab0
+✅ Updated liked articles for user: [
+  new ObjectId('68672308fb2cb787e558bce0'),
+  new ObjectId('6939df9fbe496ec97e1d4ab0')
+]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4ab0
+✅ Updated saved articles for user: [ new ObjectId('6939df9fbe496ec97e1d4ab0') ]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4aae
+✅ Updated saved articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4aae
+✅ Updated liked articles for user: [
+  new ObjectId('68672308fb2cb787e558bce0'),
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae')
+]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4aac
+✅ Updated saved articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4aac
+✅ Updated liked articles for user: [
+  new ObjectId('68672308fb2cb787e558bce0'),
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac')
+]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4aaa
+✅ Updated saved articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 6939df9fbe496ec97e1d4aaa
+✅ Updated liked articles for user: [
+  new ObjectId('68672308fb2cb787e558bce0'),
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa')
+]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 6939df1e618f3e1bc87cd158
+✅ Updated saved articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 6939df1e618f3e1bc87cd158
+✅ Updated liked articles for user: [
+  new ObjectId('68672308fb2cb787e558bce0'),
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158')
+]
+🔍 Fetching user with populated articles...
+Fetching all articles...
+Fetching all articles...
+Fetching article with ID: 68672308fb2cb787e558bce0
+Fetching all articles...
+Fetching article with ID: 68672308fb2cb787e558bce0
+Fetching all articles...
+Fetching all articles...
+Fetching all articles...
+🟢 Backend received unsave request for userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Removed article from savedArticles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received unlike request for userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Removed article from likedArticles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158')
+]
+🔍 Fetching user with populated articles...
+Fetching all articles...
+Fetching all articles...
+🟢 Backend received unlike request for userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Removed article from likedArticles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158')
+]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Updated saved articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158'),
+  new ObjectId('68672308fb2cb787e558bce0')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received unsave request for userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Removed article from savedArticles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158')
+]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Updated saved articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158'),
+  new ObjectId('68672308fb2cb787e558bce0')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received unsave request for userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Removed article from savedArticles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158')
+]
+🔍 Fetching user with populated articles...
+🟢 Backend received userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Updated liked articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158'),
+  new ObjectId('68672308fb2cb787e558bce0')
+]
+🔍 Fetching user with populated articles...
+🟢 Received userId: 6939da867265ec1a9c86c236 and articleId: 68672308fb2cb787e558bce0
+✅ Updated saved articles for user: [
+  new ObjectId('6939df9fbe496ec97e1d4ab0'),
+  new ObjectId('6939df9fbe496ec97e1d4aae'),
+  new ObjectId('6939df9fbe496ec97e1d4aac'),
+  new ObjectId('6939df9fbe496ec97e1d4aaa'),
+  new ObjectId('6939df1e618f3e1bc87cd158'),
+  new ObjectId('68672308fb2cb787e558bce0')
+]
+🔍 Fetching user with populated articles...

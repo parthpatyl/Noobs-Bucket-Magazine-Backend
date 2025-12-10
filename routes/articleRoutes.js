@@ -115,6 +115,64 @@ router.post("/save/:articleId", async (req, res) => {
     }
 });
 
+router.post("/unlike/:articleId", async (req, res) => {
+    try {
+        const { userId } = req.body;
+        const { articleId } = req.params;
+
+        console.log("🟢 Backend received unlike request for userId:", userId, "and articleId:", articleId);
+
+        if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(articleId)) {
+            return res.status(400).json({ success: false, message: "Invalid user or article ID" });
+        }
+
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        // Remove from likedArticles if present
+        user.likedArticles = user.likedArticles.filter(id => id.toString() !== articleId);
+
+        await user.save();
+
+        console.log("✅ Removed article from likedArticles for user:", user.likedArticles);
+        res.json({ success: true, likedArticles: user.likedArticles });
+    } catch (error) {
+        console.error("❌ Error unliking article:", error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+});
+
+router.post("/unsave/:articleId", async (req, res) => {
+    try {
+        const { userId } = req.body;
+        const { articleId } = req.params;
+
+        console.log("🟢 Backend received unsave request for userId:", userId, "and articleId:", articleId);
+
+        if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(articleId)) {
+            return res.status(400).json({ success: false, message: "Invalid user or article ID" });
+        }
+
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        // Remove from savedArticles if present
+        user.savedArticles = user.savedArticles.filter(id => id.toString() !== articleId);
+
+        await user.save();
+
+        console.log("✅ Removed article from savedArticles for user:", user.savedArticles);
+        res.json({ success: true, savedArticles: user.savedArticles });
+    } catch (error) {
+        console.error("❌ Error unsaving article:", error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+});
+
 router.post("/add", upload.single('image'), async (req, res) => {
     try {
         const { title, category, excerpt, readtime, author, tags, content } = req.body;
