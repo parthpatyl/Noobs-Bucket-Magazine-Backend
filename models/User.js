@@ -4,6 +4,8 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
+  bio: String,
+  profileImage: String,
   // Store references as ObjectId so that population works correctly.
   savedArticles: [{ 
     type: mongoose.Schema.Types.ObjectId, 
